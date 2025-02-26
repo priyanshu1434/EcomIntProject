@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EcomIntProject.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace EcomIntProject.Controllers
 {
@@ -13,7 +15,7 @@ namespace EcomIntProject.Controllers
 
 
         // Fetching Data
-        public List<Order> readAllData()
+        public List<Order> readAllOrderData()
         {
             return orderContext.Orders.ToList();
         }
@@ -21,13 +23,18 @@ namespace EcomIntProject.Controllers
 
 
         // Fetching specific entity Data
-        public Order getData(int id)
+        public Order getOrderData(int id)
         {
             return orderContext.Orders.FirstOrDefault(e => e.OrderId == id);
         }
 
+        public List<Order> getUserOrderData(int id)
+        {
+            return orderContext.Orders.Where(e => e.UserId == id).Include(e => e.Product).ToList();
+        }
+
         //Creating new Data
-        public void createData(Order newEntity)
+        public void createOrderData(Order newEntity)
         {
             orderContext.Orders.Add(newEntity);
             orderContext.SaveChanges();
@@ -35,7 +42,7 @@ namespace EcomIntProject.Controllers
         }
 
         // Deleting specific Data
-        public void delData(int id)
+        public void delOrderData(int id)
         {
             var entity = orderContext.Orders.Find(id);
             if (entity != null)

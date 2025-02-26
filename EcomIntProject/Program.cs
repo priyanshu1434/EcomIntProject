@@ -8,7 +8,7 @@ OrderController order = new OrderController();
 
 
 Console.WriteLine("List of all entities: ");
-List<Product> data = product.readAllData();
+List<Product> data = product.readAllProductData();
 foreach (Product entityClass in data)
 {
     Console.WriteLine($"{entityClass.ProductId} | {entityClass.Name} | {entityClass.Description} | {entityClass.Price} | {entityClass.Category}");
@@ -16,7 +16,7 @@ foreach (Product entityClass in data)
 
 
 Console.WriteLine("\n\nFetching entity with id");
-var getDataofPerson = product.getData(102);
+var getDataofPerson = product.getProductData(102);
 if (getDataofPerson != null)
 {
     Console.WriteLine($"ID: {getDataofPerson.ProductId}, Name: {getDataofPerson.Name}, Description: {getDataofPerson.Description}");
@@ -27,7 +27,7 @@ else
 }
 
 Console.WriteLine("\n\nList of all orders: ");
-List<Order> orderdata = order.readAllData();
+List<Order> orderdata = order.readAllOrderData();
 foreach (Order entityClass in orderdata)
 {
     Console.WriteLine($"{entityClass.OrderId} | {entityClass.ProductId} | {entityClass.TotalPrice} | {entityClass.ShippingAddress} | {entityClass.OrderStatus} | {entityClass.PaymentStatus} | {entityClass.OrderDate}");
@@ -44,3 +44,10 @@ foreach (CartItem cartItem in cartItems)
 
 }
 Console.WriteLine($"Total Cart Price:  {totalCartPrice} Rs");
+
+List<Order> orderItems = order.getUserOrderData(1001);
+foreach (Order orderItem in orderItems)
+{
+    Console.WriteLine($" {orderItem.OrderId} | Product: {orderItem.Product.Name}, Description: {orderItem.Product.Description}, Total Price: {orderItem.TotalPrice} Rs, Shipping Address: {orderItem.ShippingAddress}, Order Status: {orderItem.OrderStatus}, Payment status: {orderItem.PaymentStatus}, Date: {orderItem.OrderDate}");
+
+}

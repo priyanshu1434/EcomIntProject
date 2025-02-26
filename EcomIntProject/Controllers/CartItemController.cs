@@ -12,13 +12,13 @@ namespace EcomIntProject.Controllers
     {
         EcomContext cartContext = new EcomContext();
 
-        public List<CartItem> readAllData()
+        public List<CartItem> readAllCartData()
         {
             return cartContext.CartItems.ToList();
         }
 
         // Fetching specific entity Data
-        public CartItem getData(int id)
+        public CartItem getCartData(int id)
         {
             return cartContext.CartItems.FirstOrDefault(e => e.CartItemId == id);
         }
@@ -30,7 +30,7 @@ namespace EcomIntProject.Controllers
         }
 
         // Creating new Data
-        public void createData(CartItem newEntity)
+        public void createCartData(CartItem newEntity)
         {
             cartContext.CartItems.Add(newEntity);
             cartContext.SaveChanges();
@@ -38,7 +38,7 @@ namespace EcomIntProject.Controllers
         }
 
         // Deleting specific Data
-        public void delData(int id)
+        public void delCartData(int id)
         {
             var entity = cartContext.Product.Find(id);
             if (entity != null)

@@ -13,19 +13,19 @@ namespace EcomIntProject.Controllers
 
 
         // Fetching Data
-        public List<Product> readAllData()
+        public List<Product> readAllProductData()
         {
             return classContext.Product.ToList();
         }
 
         // Fetching specific entity Data
-        public Product getData(int id)
+        public Product getProductData(int id)
         {
             return classContext.Product.FirstOrDefault(e => e.ProductId == id);
         }
 
         // Creating new Data
-        public void createData(Product newEntity)
+        public void createProductData(Product newEntity)
         {
             classContext.Product.Add(newEntity);
             classContext.SaveChanges();
@@ -33,7 +33,7 @@ namespace EcomIntProject.Controllers
         }
 
         // Deleting specific Data
-        public void delData(int id)
+        public void delProductData(int id)
         {
             var entity = classContext.Product.Find(id);
             if (entity != null)
