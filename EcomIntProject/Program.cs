@@ -2,11 +2,10 @@
 // Read and print all data
 using EcomIntProject.Controllers;
 using EcomIntProject.Models;
-using Userdatabase;
 
 
-UserOperations userOperations = new UserOperations();
-userOperations.Run();
+
+
 ProductController product = new ProductController();
 OrderController order = new OrderController();
 

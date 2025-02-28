@@ -31,9 +31,9 @@ namespace Userdatabase
             Console.WriteLine("Enter the phone number");
             string phoneNumber = Console.ReadLine();
 
-            Userclass userclass = new Userclass
+            User userclass = new User
             {
-                Id = id,
+                UserId = id,
                 Name = name,
                 Email = email,
                 Password = password,
