@@ -7,7 +7,7 @@ using EcomIntProject.Models;
 
 
 ProductController product = new ProductController();
-OrderController order = new OrderController();
+OrderController order     = new OrderController();
 
 
 Console.WriteLine("List of all entities: ");
